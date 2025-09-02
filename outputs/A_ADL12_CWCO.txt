@@ -1,0 +1,31 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               CWCO_ret   R-squared:                       0.093
+Model:                            OLS   Adj. R-squared:                  0.066
+Method:                 Least Squares   F-statistic:                     3.510
+Date:                Mon, 01 Sep 2025   Prob (F-statistic):            0.00132
+Time:                        23:12:14   Log-Likelihood:                -503.21
+No. Observations:                 249   AIC:                             1022.
+Df Residuals:                     241   BIC:                             1051.
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+const            3.4573      3.249      1.064      0.288      -2.943       9.858
+CWCO_ret_L1     -0.0479      0.065     -0.739      0.461      -0.175       0.080
+^GSPC_ret        0.3632      0.100      3.620      0.000       0.166       0.561
+^GSPC_ret_L1    -0.0117      0.103     -0.113      0.910      -0.214       0.191
+^GSPC_ret_L2    -0.0036      0.100     -0.036      0.971      -0.201       0.194
+CWCO_lv          0.5224      0.282      1.855      0.065      -0.032       1.077
+CWCO_lv_L1      -1.0536      0.319     -3.301      0.001      -1.682      -0.425
+CWCO_lv_L2       0.2365      0.284      0.832      0.406      -0.323       0.796
+==============================================================================
+Omnibus:                       46.960   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              258.092
+Skew:                          -0.571   Prob(JB):                     9.04e-57
+Kurtosis:                       7.855   Cond. No.                         552.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
