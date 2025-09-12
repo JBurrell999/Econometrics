@@ -1,30 +1,30 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               CWCO_ret   R-squared:                       0.076
-Model:                            OLS   Adj. R-squared:                  0.049
-Method:                 Least Squares   F-statistic:                     2.824
-Date:                Mon, 01 Sep 2025   Prob (F-statistic):            0.00761
-Time:                        23:12:15   Log-Likelihood:                -505.48
-No. Observations:                 249   AIC:                             1027.
-Df Residuals:                     241   BIC:                             1055.
+Dep. Variable:               CWCO_ret   R-squared:                       0.068
+Model:                            OLS   Adj. R-squared:                  0.041
+Method:                 Least Squares   F-statistic:                     2.532
+Date:                Tue, 09 Sep 2025   Prob (F-statistic):             0.0157
+Time:                        15:31:58   Log-Likelihood:                -503.50
+No. Observations:                 250   AIC:                             1023.
+Df Residuals:                     242   BIC:                             1051.
 Df Model:                           7                                         
 Covariance Type:            nonrobust                                         
 ===============================================================================
                   coef    std err          t      P>|t|      [0.025      0.975]
 -------------------------------------------------------------------------------
-const           3.2323      3.277      0.986      0.325      -3.224       9.688
-CWCO_ret_L1    -0.0427      0.065     -0.660      0.510      -0.170       0.085
-nas_ret         0.2226      0.078      2.841      0.005       0.068       0.377
-nas_ret_L1     -0.0320      0.080     -0.402      0.688      -0.189       0.125
-nas_ret_L2      0.0092      0.078      0.117      0.907      -0.145       0.163
-CWCO_lv         0.5175      0.284      1.824      0.069      -0.041       1.077
-CWCO_lv_L1     -1.0629      0.322     -3.298      0.001      -1.698      -0.428
-CWCO_lv_L2      0.2705      0.287      0.944      0.346      -0.294       0.835
+const           2.5228      3.229      0.781      0.435      -3.839       8.884
+CWCO_ret_L1    -0.0479      0.064     -0.747      0.456      -0.174       0.078
+nas_ret         0.1898      0.078      2.430      0.016       0.036       0.344
+nas_ret_L1     -0.0164      0.079     -0.208      0.836      -0.172       0.139
+nas_ret_L2     -0.0026      0.078     -0.033      0.973      -0.155       0.150
+CWCO_lv         0.6056      0.281      2.155      0.032       0.052       1.159
+CWCO_lv_L1     -1.0604      0.320     -3.314      0.001      -1.691      -0.430
+CWCO_lv_L2      0.2452      0.285      0.860      0.390      -0.316       0.807
 ==============================================================================
-Omnibus:                       42.378   Durbin-Watson:                   1.973
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              220.601
-Skew:                          -0.503   Prob(JB):                     1.25e-48
-Kurtosis:                       7.500   Cond. No.                         552.
+Omnibus:                       46.815   Durbin-Watson:                   1.993
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              267.032
+Skew:                          -0.551   Prob(JB):                     1.03e-58
+Kurtosis:                       7.942   Cond. No.                         554.
 ==============================================================================
 
 Notes:

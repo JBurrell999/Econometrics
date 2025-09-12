@@ -1,6 +1,6 @@
 Wald test (lags of market & volume = 0):
-<F test: F=array([[0.84910271]]), p=0.4953213768404252, df_denom=241, df_num=4>
+<F test: F=array([[0.73674947]]), p=0.56770211193661, df_denom=242, df_num=4>
 
 Ljung-Box at lag 10:
      lb_stat  lb_pvalue
-10  8.352233   0.594473
+10  8.218371   0.607516

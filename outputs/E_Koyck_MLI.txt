@@ -1,28 +1,28 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                MLI_ret   R-squared:                       0.420
-Model:                            OLS   Adj. R-squared:                  0.415
-Method:                 Least Squares   F-statistic:                     89.30
-Date:                Mon, 01 Sep 2025   Prob (F-statistic):           6.54e-30
-Time:                        23:12:15   Log-Likelihood:                -486.27
-No. Observations:                 250   AIC:                             978.5
-Df Residuals:                     247   BIC:                             989.1
+Dep. Variable:                MLI_ret   R-squared:                       0.410
+Model:                            OLS   Adj. R-squared:                  0.405
+Method:                 Least Squares   F-statistic:                     86.13
+Date:                Tue, 09 Sep 2025   Prob (F-statistic):           3.94e-29
+Time:                        15:31:58   Log-Likelihood:                -485.90
+No. Observations:                 251   AIC:                             977.8
+Df Residuals:                     248   BIC:                             988.4
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          0.0527      0.108      0.488      0.626      -0.160       0.265
-MLI_ret_L1     0.0049      0.048      0.100      0.920      -0.091       0.100
-^GSPC_ret      1.2087      0.090     13.360      0.000       1.031       1.387
+const          0.0766      0.107      0.716      0.474      -0.134       0.287
+MLI_ret_L1     0.0031      0.049      0.064      0.949      -0.093       0.099
+^GSPC_ret      1.1834      0.090     13.119      0.000       1.006       1.361
 ==============================================================================
-Omnibus:                      151.784   Durbin-Watson:                   1.933
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3087.052
-Skew:                           1.957   Prob(JB):                         0.00
-Kurtosis:                      19.764   Cond. No.                         2.24
+Omnibus:                      155.745   Durbin-Watson:                   1.935
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3303.928
+Skew:                           2.007   Prob(JB):                         0.00
+Kurtosis:                      20.315   Cond. No.                         2.21
 ==============================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
-{'lambda': 0.004861812947225007, 'beta': 1.2087436023284313, 'lag1': 0.005876685295675762, 'lag10': 8.919009917321729e-24, 'LRP': 1.2146489985559443}
+{'lambda': 0.00312996458795161, 'beta': 1.1833972040359695, 'lag1': 0.0037039913421135304, 'lag10': 1.067885719906539e-25, 'LRP': 1.1871128251405625}

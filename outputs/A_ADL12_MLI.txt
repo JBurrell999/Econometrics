@@ -1,30 +1,30 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                MLI_ret   R-squared:                       0.428
-Model:                            OLS   Adj. R-squared:                  0.412
-Method:                 Least Squares   F-statistic:                     25.79
-Date:                Mon, 01 Sep 2025   Prob (F-statistic):           3.37e-26
-Time:                        23:12:14   Log-Likelihood:                -482.65
-No. Observations:                 249   AIC:                             981.3
-Df Residuals:                     241   BIC:                             1009.
+Dep. Variable:                MLI_ret   R-squared:                       0.419
+Model:                            OLS   Adj. R-squared:                  0.402
+Method:                 Least Squares   F-statistic:                     24.88
+Date:                Tue, 09 Sep 2025   Prob (F-statistic):           1.88e-25
+Time:                        15:31:58   Log-Likelihood:                -482.43
+No. Observations:                 250   AIC:                             980.9
+Df Residuals:                     242   BIC:                             1009.
 Df Model:                           7                                         
 Covariance Type:            nonrobust                                         
 ================================================================================
                    coef    std err          t      P>|t|      [0.025      0.975]
 --------------------------------------------------------------------------------
-const            2.2551      4.195      0.538      0.591      -6.008      10.518
-MLI_ret_L1       0.0352      0.064      0.548      0.584      -0.091       0.162
-^GSPC_ret        1.2035      0.093     13.000      0.000       1.021       1.386
-^GSPC_ret_L1    -0.1104      0.120     -0.918      0.360      -0.347       0.127
-^GSPC_ret_L2    -0.0802      0.093     -0.864      0.389      -0.263       0.103
-MLI_lv          -0.1519      0.232     -0.654      0.514      -0.609       0.305
-MLI_lv_L1       -0.2752      0.243     -1.133      0.258      -0.754       0.203
-MLI_lv_L2        0.2660      0.232      1.149      0.252      -0.190       0.722
+const            2.8287      4.129      0.685      0.494      -5.305      10.962
+MLI_ret_L1       0.0306      0.064      0.478      0.633      -0.096       0.157
+^GSPC_ret        1.1869      0.092     12.837      0.000       1.005       1.369
+^GSPC_ret_L1    -0.0969      0.119     -0.816      0.416      -0.331       0.137
+^GSPC_ret_L2    -0.0847      0.093     -0.915      0.361      -0.267       0.098
+MLI_lv          -0.1583      0.230     -0.688      0.492      -0.611       0.295
+MLI_lv_L1       -0.2598      0.240     -1.082      0.280      -0.733       0.213
+MLI_lv_L2        0.2165      0.229      0.946      0.345      -0.234       0.668
 ==============================================================================
-Omnibus:                      164.398   Durbin-Watson:                   1.985
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3385.326
-Skew:                           2.210   Prob(JB):                         0.00
-Kurtosis:                      20.514   Cond. No.                         917.
+Omnibus:                      168.467   Durbin-Watson:                   2.001
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3615.708
+Skew:                           2.265   Prob(JB):                         0.00
+Kurtosis:                      21.072   Cond. No.                         912.
 ==============================================================================
 
 Notes:
