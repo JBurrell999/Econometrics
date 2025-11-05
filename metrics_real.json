@@ -1,0 +1,18 @@
+{
+  "best_order": [
+    0,
+    0,
+    1
+  ],
+  "best_model_BIC": -413.5239181665047,
+  "best_model_AIC": -422.96640159694505,
+  "RMSFE_best_expost_5": 0.04897887739088489,
+  "RMSFE_ar1_expost_5": 0.04917709670906598,
+  "files": {
+    "csv": "/Users/jjburrell/Econometrics/Econometrics/project_dataset_hw4_real.csv",
+    "dta": "/Users/jjburrell/Econometrics/Econometrics/project_dataset_hw4_real.dta",
+    "model_summary": "best_arma_model_summary.txt",
+    "fig_expost": "expost_5step_forecast_real.png",
+    "fig_exante": "exante_2step_forecast_real.png"
+  }
+}
