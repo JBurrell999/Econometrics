@@ -1,0 +1,64 @@
+{
+  "config": {
+    "data_root": "/Users/jjburrell/Downloads/kagglecatsanddogs_5340/PetImages",
+    "epochs": 4,
+    "batch_size": 64,
+    "image_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 303,
+    "device": "cpu",
+    "max_samples_per_class": null
+  },
+  "dataset": {
+    "total_valid_images": 24998,
+    "removed_images": 2,
+    "train_size": 19998,
+    "validation_size": 5000,
+    "mode_counts_before_rgb_conversion": {
+      "RGB": 24931,
+      "P": 57,
+      "L": 5,
+      "RGBA": 2,
+      "CMYK": 3
+    }
+  },
+  "history": {
+    "train_loss": [
+      0.67069057846489,
+      0.6384616861797379,
+      0.6123763013272324,
+      0.5807207209168106
+    ],
+    "val_loss": [
+      0.6595836015701294,
+      0.6161321561336517,
+      0.6014682123184204,
+      0.5471517019748687
+    ],
+    "val_accuracy": [
+      0.633,
+      0.6566,
+      0.6748,
+      0.7204
+    ],
+    "val_roc_auc": [
+      0.68856456,
+      0.7290806400000001,
+      0.7599697599999999,
+      0.80946032
+    ],
+    "val_average_precision": [
+      0.6796067444612365,
+      0.7299811118411643,
+      0.7564780416000092,
+      0.8050979531680725
+    ]
+  },
+  "final_validation_metrics": {
+    "loss": 0.5471517019748687,
+    "accuracy": 0.7204,
+    "roc_auc": 0.80946032,
+    "average_precision": 0.8050979531680725
+  }
+}

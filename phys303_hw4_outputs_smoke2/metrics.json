@@ -1,0 +1,46 @@
+{
+  "config": {
+    "data_root": "/Users/jjburrell/Downloads/kagglecatsanddogs_5340/PetImages",
+    "epochs": 1,
+    "batch_size": 32,
+    "image_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 303,
+    "device": "cpu",
+    "max_samples_per_class": 200
+  },
+  "dataset": {
+    "total_valid_images": 400,
+    "removed_images": 0,
+    "train_size": 320,
+    "validation_size": 80,
+    "mode_counts_before_rgb_conversion": {
+      "RGB": 398,
+      "P": 2
+    }
+  },
+  "history": {
+    "train_loss": [
+      0.6954607248306275
+    ],
+    "val_loss": [
+      0.693028199672699
+    ],
+    "val_accuracy": [
+      0.5125
+    ],
+    "val_roc_auc": [
+      0.53125
+    ],
+    "val_average_precision": [
+      0.5494851217232997
+    ]
+  },
+  "final_validation_metrics": {
+    "loss": 0.693028199672699,
+    "accuracy": 0.5125,
+    "roc_auc": 0.53125,
+    "average_precision": 0.5494851217232997
+  }
+}
