@@ -14,24 +14,42 @@ LOCAL_CACHE_DIR.mkdir(exist_ok=True)
 os.environ.setdefault("MPLCONFIGDIR", str((LOCAL_CACHE_DIR / "matplotlib").resolve()))
 os.environ.setdefault("XDG_CACHE_HOME", str(LOCAL_CACHE_DIR.resolve()))
 
-import matplotlib
 
-matplotlib.use("Agg")
+def _running_in_ipython() -> bool:
+    try:
+        from IPython import get_ipython
+    except ModuleNotFoundError:
+        return False
+    return get_ipython() is not None
 
-import matplotlib.pyplot as plt
-import numpy as np
-import torch
-from PIL import Image, ImageFile
-from sklearn.metrics import (
-    accuracy_score,
-    average_precision_score,
-    precision_recall_curve,
-    roc_auc_score,
-    roc_curve,
-)
-from torch import nn
-from torch.utils.data import DataLoader, Dataset
-from torchvision import transforms
+
+try:
+    import matplotlib
+
+    if os.environ.get("MPLBACKEND") is None and not _running_in_ipython():
+        matplotlib.use("Agg")
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import torch
+    from PIL import Image, ImageFile
+    from sklearn.metrics import (
+        accuracy_score,
+        average_precision_score,
+        precision_recall_curve,
+        roc_auc_score,
+        roc_curve,
+    )
+    from torch import nn
+    from torch.utils.data import DataLoader, Dataset
+    from torchvision import models, transforms
+except ModuleNotFoundError as exc:
+    missing = exc.name or "required package"
+    raise SystemExit(
+        "Missing dependency: "
+        f"{missing}. Install the PHYS 303 HW4 stack first, for example:\n"
+        "python3 -m pip install torch torchvision matplotlib numpy pillow scikit-learn"
+    ) from exc
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -60,6 +78,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--seed", type=int, default=303)
     parser.add_argument(
+        "--device",
+        choices=("auto", "cpu", "mps", "cuda"),
+        default="auto",
+        help="Device for training. 'auto' prefers CUDA, then MPS, then CPU.",
+    )
+    parser.add_argument(
         "--max-samples-per-class",
         type=int,
         default=None,
@@ -72,6 +96,25 @@ def set_seed(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
+
+
+def select_device(requested: str) -> torch.device:
+    if requested == "cpu":
+        return torch.device("cpu")
+    if requested == "cuda":
+        if torch.cuda.is_available():
+            return torch.device("cuda")
+        raise ValueError("CUDA was requested but is not available in this environment.")
+    if requested == "mps":
+        if torch.backends.mps.is_available():
+            return torch.device("mps")
+        raise ValueError("MPS was requested but is not available in this environment.")
+
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    return torch.device("cpu")
 
 
 @dataclass(frozen=True)
@@ -114,31 +157,16 @@ class PetDataset(Dataset):
 class SmallCNN(nn.Module):
     def __init__(self) -> None:
         super().__init__()
-        self.features = nn.Sequential(
-            nn.Conv2d(3, 32, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2),
-            nn.Conv2d(32, 64, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2),
-            nn.Conv2d(64, 128, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2),
-            nn.Conv2d(128, 256, kernel_size=3, padding=1),
-            nn.ReLU(inplace=True),
-            nn.AdaptiveAvgPool2d((1, 1)),
-        )
-        self.classifier = nn.Sequential(
-            nn.Flatten(),
+        backbone = models.resnet18(weights=None)
+        in_features = backbone.fc.in_features
+        backbone.fc = nn.Sequential(
             nn.Dropout(p=0.3),
-            nn.Linear(256, 64),
-            nn.ReLU(inplace=True),
-            nn.Dropout(p=0.2),
-            nn.Linear(64, 1),
+            nn.Linear(in_features, 1),
         )
+        self.backbone = backbone
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
-        return self.classifier(self.features(inputs)).squeeze(1)
+        return self.backbone(inputs).squeeze(1)
 
 
 def discover_samples(
@@ -351,7 +379,7 @@ def main() -> None:
     set_seed(args.seed)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    device = torch.device("cpu")
+    device = select_device(args.device)
     samples, removed, mode_counts = discover_samples(
         data_root=args.data_root, max_samples_per_class=args.max_samples_per_class
     )
@@ -371,6 +399,18 @@ def main() -> None:
         batch_size=args.batch_size,
         num_workers=args.num_workers,
         shuffle=False,
+    )
+
+    print(
+        {
+            "data_root": str(args.data_root),
+            "output_dir": str(args.output_dir),
+            "device": str(device),
+            "total_valid_images": len(samples),
+            "removed_images": len(removed),
+            "train_size": len(train_samples),
+            "validation_size": len(val_samples),
+        }
     )
 
     model = SmallCNN().to(device)
